@@ -1,0 +1,56 @@
+<section id="pemesanan">
+    <h2>Pemesanan Tiket</h2>
+    <div class="ticket-form">
+        <label for="jenis-tiket">Pilih Jenis Tiket:</label>
+        <select id="jenis-tiket" onchange="updatePrice()">
+            <option value="dewasa">Dewasa - Rp 50.000</option>
+            <option value="anak-anak">Anak-anak - Rp 20.000</option>
+            <option value="lansia">Lansia - Rp 30.000</option>
+        </select>
+        <p id="harga">Harga: Rp 50.000</p>
+        <button onclick="generateQRCode()">Pesan Tiket</button>
+    </div>
+    
+    <div class="qr-code" id="qr-code">
+        <h3>QR Code Anda:</h3>
+        <img id="qr-img" src="" alt="QR Code" />
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Kebun Binatang XYZ. Semua hak dilindungi.</p>
+</footer>
+
+<script>
+    function updatePrice() {
+        const jenisTiket = document.getElementById("jenis-tiket").value;
+        let harga;
+        switch (jenisTiket) {
+            case "dewasa":
+                harga = "Rp 50.000";
+                break;
+            case "anak-anak":
+                harga = "Rp 20.000";
+                break;
+            case "lansia":
+                harga = "Rp 30.000";
+                break;
+            default:
+                harga = "Rp 0";
+        }
+        document.getElementById("harga").innerText = "Harga: " + harga;
+    }
+
+    function generateQRCode() {
+        const jenisTiket = document.getElementById("jenis-tiket").value;
+        const qrCodeImg = document.getElementById("qr-img");
+
+        // Simulasi URL QR code yang berbeda berdasarkan jenis tiket
+        const qrCodeURL = "https://api.qrserver.com/v1/create-qr-code/?data=Pesan-" + jenisTiket + "&size=150x150";
+        qrCodeImg.src = qrCodeURL;
+        document.getElementById("qr-code").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
