@@ -1,56 +1,278 @@
-<section id="pemesanan">
-    <h2>Pemesanan Tiket</h2>
-    <div class="ticket-form">
-        <label for="jenis-tiket">Pilih Jenis Tiket:</label>
-        <select id="jenis-tiket" onchange="updatePrice()">
-            <option value="dewasa">Dewasa - Rp 50.000</option>
-            <option value="anak-anak">Anak-anak - Rp 20.000</option>
-            <option value="lansia">Lansia - Rp 30.000</option>
-        </select>
-        <p id="harga">Harga: Rp 50.000</p>
-        <button onclick="generateQRCode()">Pesan Tiket</button>
-    </div>
-    
-    <div class="qr-code" id="qr-code">
-        <h3>QR Code Anda:</h3>
-        <img id="qr-img" src="" alt="QR Code" />
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemesanan Tiket</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <img src="Header.png" alt="Header Image" class="header-image" />
+      <div class="header-content">
+        <img src="Logo piks.png" alt="Logo Rimba Raya Zoo" class="logo-nav" />
+        <nav class="sticky-nav">
+          <ul>
+            <li><a href="index.html" class="nav-button">Beranda</a></li>
+            <li><a href="info_satwa.html" class="nav-button">Satwa</a></li>
+            <li>
+              <a href="info_fasilitas.html" class="nav-button">Fasilitas</a>
+            </li>
+            <li><a href="pemesanan_tiket.html" class="nav-button">Tiket</a></li>
+            <li>
+              <a href="kritik_saran.html" class="nav-button">Kritik & Saran</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section id="pemesanan">
+        <h2>Pemesanan Tiket</h2>
+        <div class="ticket-form">
+          <h3>Pilih Tiket:</h3>
 
-<footer>
-    <p>&copy; 2024 Kebun Binatang XYZ. Semua hak dilindungi.</p>
-</footer>
+          <div class="ticket-type">
+            <label for="jumlah-tiket-dewasa">Dewasa - Rp 50.000:</label>
+            <input
+              type="number"
+              id="jumlah-tiket-dewasa"
+              value="0"
+              min="0"
+              onchange="updatePrice()"
+            />
+          </div>
 
-<script>
-    function updatePrice() {
-        const jenisTiket = document.getElementById("jenis-tiket").value;
-        let harga;
-        switch (jenisTiket) {
-            case "dewasa":
-                harga = "Rp 50.000";
-                break;
-            case "anak-anak":
-                harga = "Rp 20.000";
-                break;
-            case "lansia":
-                harga = "Rp 30.000";
-                break;
-            default:
-                harga = "Rp 0";
+          <div class="ticket-type">
+            <label for="jumlah-tiket-anak">Anak-anak - Rp 20.000:</label>
+            <input
+              type="number"
+              id="jumlah-tiket-anak"
+              value="0"
+              min="0"
+              onchange="updatePrice()"
+            />
+          </div>
+
+          <div class="ticket-type">
+            <label for="jumlah-tiket-lansia">Lansia - Rp 30.000:</label>
+            <input
+              type="number"
+              id="jumlah-tiket-lansia"
+              value="0"
+              min="0"
+              onchange="updatePrice()"
+            />
+          </div>
+
+          <p id="total-harga">Total Harga: Rp 0</p>
+          <button onclick="pesanTiket()">Pesan Tiket</button>
+        </div>
+
+        <div class="qr-code" id="qr-code" style="display: none">
+          <h3>QR Code Anda:</h3>
+          <img id="qr-img" src="" alt="QR Code" />
+        </div>
+      </section>
+
+      <script>
+        function updatePrice() {
+          const jumlahDewasa = parseInt(
+            document.getElementById("jumlah-tiket-dewasa").value
+          );
+          const jumlahAnak = parseInt(
+            document.getElementById("jumlah-tiket-anak").value
+          );
+          const jumlahLansia = parseInt(
+            document.getElementById("jumlah-tiket-lansia").value
+          );
+
+          const hargaDewasa = 50000;
+          const hargaAnak = 20000;
+          const hargaLansia = 30000;
+
+          const totalHarga =
+            jumlahDewasa * hargaDewasa +
+            jumlahAnak * hargaAnak +
+            jumlahLansia * hargaLansia;
+          document.getElementById("total-harga").innerText =
+            "Total Harga: Rp " + totalHarga.toLocaleString();
         }
-        document.getElementById("harga").innerText = "Harga: " + harga;
-    }
 
-    function generateQRCode() {
-        const jenisTiket = document.getElementById("jenis-tiket").value;
-        const qrCodeImg = document.getElementById("qr-img");
+        function pesanTiket() {
+          const jumlahDewasa = document.getElementById(
+            "jumlah-tiket-dewasa"
+          ).value;
+          const jumlahAnak = document.getElementById("jumlah-tiket-anak").value;
+          const jumlahLansia = document.getElementById(
+            "jumlah-tiket-lansia"
+          ).value;
 
-        // Simulasi URL QR code yang berbeda berdasarkan jenis tiket
-        const qrCodeURL = "https://api.qrserver.com/v1/create-qr-code/?data=Pesan-" + jenisTiket + "&size=150x150";
-        qrCodeImg.src = qrCodeURL;
-        document.getElementById("qr-code").style.display = "block";
-    }
-</script>
+          // Validasi input
+          if (jumlahDewasa == 0 && jumlahAnak == 0 && jumlahLansia == 0) {
+            alert("Silakan memilih setidaknya satu jenis tiket untuk memesan.");
+            return;
+          }
 
-</body>
+          // Simulasi pemesanan tiket
+          alert(
+            "Tiket berhasil dipesan!\nDewasa: " +
+              jumlahDewasa +
+              "\nAnak: " +
+              jumlahAnak +
+              "\nLansia: " +
+              jumlahLansia
+          );
+
+          // Menghasilkan QR Code
+          generateQRCode();
+        }
+
+        function generateQRCode() {
+          const jumlahDewasa = document.getElementById(
+            "jumlah-tiket-dewasa"
+          ).value;
+          const jumlahAnak = document.getElementById("jumlah-tiket-anak").value;
+          const jumlahLansia = document.getElementById(
+            "jumlah-tiket-lansia"
+          ).value;
+          const qrCodeImg = document.getElementById("qr-img");
+
+          // Simulasi URL QR code yang berbeda berdasarkan jenis tiket dan jumlah
+          const qrCodeURL =
+            "https://api.qrserver.com/v1/create-qr-code/?data=Pesan-Dewasa:" +
+            jumlahDewasa +
+            ",Anak:" +
+            jumlahAnak +
+            ",Lansia:" +
+            jumlahLansia +
+            "&size=150x150";
+          qrCodeImg.src = qrCodeURL;
+          document.getElementById("qr-code").style.display = "block";
+        }
+      </script>
+    </main>
+
+    <div class="footer">
+      <div class="footer-content">
+        <div class="top-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-2 col-md-3 col-sm-4 col-6 col-top">
+                <div class="column-head"><span>Learn More</span></div>
+                <ul class="column-body">
+                  <li>
+                    <a href="https://wa.me/628329949544" target="_blank"
+                      ><span>Help Center</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-2 col-md-3 col-sm-4 col-6 col-top">
+                <div class="column-head"><span>Get In Touch</span></div>
+                <ul class="column-body">
+                  <li>
+                    <a href="kritik_saran.html"><span>Get Support</span></a>
+                  </li>
+                  <li>
+                    <a href="mailto:zoorimbaraya@gmail.com"
+                      ><span>Contact Us</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2 col-md-3 col-sm-4 col-6 col-top">
+                <div class="column-head"><span>Follow Us</span></div>
+                <ul class="column-body follow-row"></ul>
+                <div class="social-container">
+                  <ul class="social-icons">
+                    <li>
+                      <a
+                        href="https://www.instagram.com/rimbarayazoo/"
+                        target="_blank"
+                      >
+                        <i class="fab fa-instagram"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="middle-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-12">
+                <div class="logo">
+                  <a href="#logo">
+                    <img
+                      src="Logo piks.png"
+                      alt="Logo Rimba Raya Zoo"
+                      class="footer-logo"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-4 col-6">
+                <h6>Address</h6>
+                <span>Kaimana Kota, Kaimana</span
+                ><span>Papua Barat, Indonesia</span><span>(200) 567-7391</span>
+              </div>
+              <div class="col-lg-4 col-md-4 col-6">
+                <h6>Help</h6>
+                <span>Visit our Help Center for answers</span
+                ><span>to common questions, or reach out to our</span
+                ><span>support team for personalized assistance.</span>
+              </div>
+              <div
+                class="col-lg-2 col-md-4 col-6 offset-lg-0 offset-md-4 offset-3"
+              >
+                <div class="button">
+                  <a href="https://wa.me/628329949544" target="_blank"
+                    >Contact Us</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div id="pattern" class="pattern">
+      <div class="map"></div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Rimba Raya Zoo. Semua hak dilindungi.</p>
+    </footer>
+
+    <div class="scroll-buttons">
+      <button id="scroll-up" onclick="scrollToTop()">↑</button>
+      <button id="scroll-down" onclick="scrollToBottom()">↓</button>
+    </div>
+
+    <script>
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Efek menggulir yang halus
+        });
+      }
+
+      function scrollToBottom() {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth", // Efek menggulir yang halus
+        });
+      }
+    </script>
+  </body>
 </html>
