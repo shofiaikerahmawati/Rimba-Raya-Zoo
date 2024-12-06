@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimba Raya Zoo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="Image RRZ/Header.png" alt="Header Image" class="header-image">  
+        <div class="header-content">
+            <img src="Image RRZ/Logo piks.png" alt="Logo Rimba Raya Zoo" class="logo-nav">
+            <nav class="sticky-nav">
+                <ul>
+                  <li><a href="index.html" class="nav-button">Beranda</a></li>
+                  <li><a href="info_satwa.html" class="nav-button">Satwa</a></li>
+                  <li><a href="info_fasilitas.html" class="nav-button">Fasilitas</a></li>
+                  <li><a href="pemesanan_tiket.html" class="nav-button">Tiket</a></li>
+                  <li><a href="kritik_saran.php" class="nav-button">Kritik & Saran</a></li>
+                </ul>
+            </nav>
+        </div>
+    <header>
+    <main>
+        <h2><b>Selamat datang di Kebun Binatang Rimba Raya!</b></h2>
+        <p>Kami menyediakan berbagai informasi tentang satwa dan fasilitas yang tersedia.</p>
+      </section>
+    </main>
+    <section id="about" class="text-center">
+        <h2><b>Tentang Rimba Raya Zoo</b></h2>
+        <p>Selamat datang di Rimba Raya Zoo, surga satwa liar yang terletak di tengah pemandangan alam yang memukau. Didirikan pada tahun 2024, kebun binatang kami berkomitmen untuk menjadi pusat konservasi, edukasi, dan rekreasi yang menginspirasi pengunjung untuk lebih mencintai dunia satwa.</p>
+        <p>Di area seluas 35 hektar, Rimba Raya Zoo menjadi rumah bagi lebih dari 200 spesies hewan dari berbagai belahan dunia. Dari mamalia kharismatik seperti harimau Sumatera hingga burung-burung eksotis dan reptil langka, setiap penghuni kebun binatang kami dirawat dengan standar kesejahteraan hewan tertinggi.</p>
+    </section>
+
+    <section id="ketentuan" class="text-center">
+        <h2><b>Ketentuan</b></h2>
+        <p>Silakan baca ketentuan berikut sebelum mengunjungi Kebun Binatang Rimba Raya :</p>
+        <p><span>Kami buka setiap hari dari pukul 08:00 hingga 18:00. Pengunjung diharapkan untuk menjaga kebersihan dan tidak</span><span> memberi makan satwa sembarangan. Pastikan untuk mematuhi semua petunjuk yang ada di lokasi.</span></p>
+        <img src="Image RRZ/ketentuan.png" alt="Ketentuan" class="ketentuan-image img-responsive">
+    </section>
+
+        <section id="event"class="text-center">
+            <h2><b>Event Penting</b></h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="event">
+                        <h3><b>Festival Satwa</b></h3>
+                        <img src="Image RRZ/Festifal Satwa.jpg" alt="Festival Satwa" class="event-image">
+                        <p>Festival Satwa akan diadakan pada tanggal 1-5 November. Acara ini akan menampilkan berbagai pertunjukan satwa dan edukasi tentang konservasi.</p>
+                        <a href="festivalsatwa_info.html" class="btn btn-secondary">Info Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event">
+                        <h3><b>Hari Lingkungan Hidup</b></h3>
+                        <img src="Image RRZ/Hari lingkungan hidup.jpg" alt="Hari Lingkungan Hidup" class="event-image">
+                        <p>Merayakan Hari Lingkungan Hidup pada tanggal 5 Juni dengan berbagai kegiatan menarik dan edukatif untuk semua pengunjung.</p>
+                        <a href="harilingkunganhidup_info.html" class="btn btn-secondary">Info Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="event">
+                        <h3><b>Pameran Edukasi Satwa</b></h3>
+                        <img src="Image RRZ/pameran edukasi satwa.png" alt="Pameran Edukasi Satwa" class="event-image">
+                        <p>Pameran Edukasi Satwa akan diadakan setiap akhir pekan dengan tema berbeda untuk meningkatkan kesadaran akan pentingnya konservasi.</p>
+                        <a href="pameranedukasi_info.html" class="btn btn-secondary">Info Selengkapnya</a>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <div class="scroll-buttons" id="scrollButtons" style="display: none;">
+      <button id="scroll-up" onclick="scrollToTop()">↑</button>
+      <button id="scroll-down" onclick="scrollToBottom()">↓</button>
+    </div>
+
+  <script>
+    // Fungsi untuk menampilkan/menyembunyikan tombol scroll
+  function toggleScrollButtons() {
+      const scrollButtons = document.getElementById('scrollButtons');
+      const scrollThreshold = 300; // Pixel scroll sebelum tombol muncul
+
+
+      // Tampilkan tombol jika sudah menggulir lebih dari threshold
+      if (window.pageYOffset > scrollThreshold) {
+          scrollButtons.style.display = 'flex';
+      } else {
+          scrollButtons.style.display = 'none';
+      }
+  }
+
+
+  // Fungsi scroll ke atas
+  function scrollToTop() {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  }
+
+
+  // Fungsi scroll ke bawah
+  function scrollToBottom() {
+      window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+      });
+  }
+
+
+  // Tambahkan event listener untuk scroll
+  window.addEventListener('scroll', toggleScrollButtons);
+
+
+  // Tambahkan animasi fade in/out
+  function addScrollButtonAnimations() {
+      const scrollButtons = document.getElementById('scrollButtons');
+     
+      scrollButtons.style.transition = 'opacity 0.3s ease, visibility 0.3s';
+     
+      scrollButtons.addEventListener('mouseenter', () => {
+          scrollButtons.style.opacity = '1';
+      });
+
+
+      scrollButtons.addEventListener('mouseleave', () => {
+          scrollButtons.style.opacity = '0.7';
+      });
+  }
+
+
+  // Inisialisasi animasi saat halaman dimuat
+  document.addEventListener('DOMContentLoaded', addScrollButtonAnimations);
+</script>
+
+
+</body>
+</html>
+
+
+<div class="footer">
+  <div class="footer-content">
+    <div class="top-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 col-top">
+            <div class="column-head"><span>Learn More</span></div>
+            <ul class="column-body">
+              <li><a href="https://wa.me/628329949544" target="_blank"><span>Help Center</span></a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 col-top">
+            <div class="column-head"><span>Get In Touch</span></div>
+            <ul class="column-body">
+              <li><a href="kritik_saran.html"><span>Get Support</span></a></li>
+              <li><a href="mailto:zoorimbaraya@gmail.com"><span>Contact Us</span></a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-2 col-md-3 col-sm-4 col-6 col-top">
+            <div class="column-head"><span>Follow Us</span></div>
+            <ul class="column-body follow-row">
+            </ul>
+            <div class="social-container">
+              <ul class="social-icons">
+                <li>
+                  <a href="https://www.instagram.com/rimbarayazoo/" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+              </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="middle-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-12">
+            <div class="map-container">
+              <a href="https://maps.app.goo.gl/pvPp3jdo7gtaxdS99" target="_blank">
+              <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15926.706733143681!2d133.76420624437955!3d-3.6609248910088614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d36001ee76518e1%3A0x387f57dde54e3d47!2sKaimana%2C%20Kaimana%20Kota%2C%20Kec.%20Kaimana%2C%20Kabupaten%20Kaimana%2C%20Papua%20Bar.!5e0!3m2!1sid!2sid!4v1733388123298!5m2!1sid!2sid"
+                  width="400"
+                  height="300"
+                  style="border:0;"
+                  allowfullscreen=""
+                  loading="lazy">
+              </iframe>
+            </a>
+          </div>
+      </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <h6>Address</h6><span>Kaimana Kota, Kaimana</span><span>Papua Barat, Indonesia</span><span>(200) 567-7391</span>
+          </div>
+          <div class="col-lg-4 col-md-4 col-6">
+            <h6>Help</h6><span>Visit our Help Center for answers</span><span>to common questions, or reach out to our</span><span>support team for personalized assistance.</span>
+          </div>
+          <div class="col-lg-2 col-md-4 col-6 offset-lg-0 offset-md-4 offset-3">
+            <div class="button"><a href="https://wa.me/628329949544" target="_blank">Contact Us</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Rimba Raya Zoo. Semua hak dilindungi.</p>
+</footer>
